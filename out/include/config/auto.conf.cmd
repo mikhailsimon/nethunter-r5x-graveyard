@@ -861,6 +861,7 @@ deps_config := \
 	drivers/net/wireless/st/cw1200/Kconfig \
 	drivers/net/wireless/st/Kconfig \
 	drivers/net/wireless/rsi/Kconfig \
+	drivers/net/wireless/realtek/rtl8812au/Kconfig \
 	drivers/net/wireless/realtek/rtl8xxxu/Kconfig \
 	drivers/net/wireless/realtek/rtlwifi/Kconfig \
 	drivers/net/wireless/realtek/rtl818x/Kconfig \
@@ -1254,7 +1255,7 @@ deps_config := \
 include/config/auto.conf: \
 	$(deps_config)
 
-ifneq "$(KERNELVERSION)" "4.14.302"
+ifneq "$(KERNELVERSION)" "4.14.304"
 include/config/auto.conf: FORCE
 endif
 ifneq "$(ARCH)" "arm64"
