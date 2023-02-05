@@ -4,10 +4,10 @@
 # Copyright (C) 2020-2021 Adithya R.
 
 SECONDS=0 # builtin bash timer
-ZIPNAME="Graveyard-v15-r5x-$(date '+%Y%m%d-%H%M').zip"
+ZIPNAME="Nethunter-r5x-$(date '+%Y%m%d-%H%M').zip"
 TC_DIR="$HOME/tc/xRageTC-clang"
 AK3_DIR="$HOME/android/AnyKernel3"
-DEFCONFIG="vendor/RMX1911_defconfig"
+DEFCONFIG="vendor/RMX1911_nethunter_defconfig"
 
 if test -z "$(git rev-parse --show-cdup 2>/dev/null)" &&
    head=$(git rev-parse --verify HEAD 2>/dev/null); then
@@ -24,8 +24,8 @@ exit 1
 fi
 fi
 
-export KBUILD_BUILD_USER=MAdMiZ
-export KBUILD_BUILD_HOST=BlackArch
+export KBUILD_BUILD_USER=mikhailsimon
+export KBUILD_BUILD_HOST=ubuntu
 
 if [[ $1 = "-r" || $1 = "--regen" ]]; then
 make O=out ARCH=arm64 $DEFCONFIG savedefconfig
