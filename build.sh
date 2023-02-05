@@ -59,10 +59,13 @@ git checkout master &> /dev/null
 zip -r9 "../$ZIPNAME" * -x '*.git*' README.md *placeholder
 cd ..
 rm -rf AnyKernel3
-rm -rf out/arch/arm64/boot
+#rm -rf out/arch/arm64/boot
+mv $ZIPNAME zipout/
 echo -e "\nCompleted in $((SECONDS / 60)) minute(s) and $((SECONDS % 60)) second(s) !"
 echo "Zip: $ZIPNAME"
-curl --upload-file $ZIPNAME https://temp.sh/$ZIPNAME; echo
+echo "Uploading Nethunter file to temporary site..."
+curl --upload-file zipout/$ZIPNAME https://temp.sh/$ZIPNAME; echo
+echo "Nethunter zip file is stored on zipout directory!"
 else
 echo -e "\nCompilation failed!"
 exit 1
