@@ -18,14 +18,14 @@ export PATH="$TC_DIR/bin:$PATH"
 
 if ! [ -d "$TC_DIR" ]; then
 echo "xRageTC clang not found! Cloning to $TC_DIR..."
-if ! git clone -q -b main --depth=1 https://github.com/xyz-prjkt/xRageTC-clang $TC_DIR; then
+if ! git clone -b main --depth=1 https://github.com/xyz-prjkt/xRageTC-clang $TC_DIR; then
 echo "Cloning failed! Aborting..."
 exit 1
 fi
 fi
 
 export KBUILD_BUILD_USER=mikhailsimon
-export KBUILD_BUILD_HOST=ubuntu
+export KBUILD_BUILD_HOST=kali
 
 if [[ $1 = "-r" || $1 = "--regen" ]]; then
 make O=out ARCH=arm64 $DEFCONFIG savedefconfig
@@ -47,7 +47,7 @@ if [ -f "out/arch/arm64/boot/Image.gz-dtb" ] && [ -f "out/arch/arm64/boot/dtbo.i
 echo -e "\nKernel compiled succesfully! Zipping up...\n"
 if [ -d "$AK3_DIR" ]; then
 cp -r $AK3_DIR AnyKernel3
-elif ! git clone -q https://github.com/mizdrake7/AnyKernel3; then
+elif ! git clone https://github.com/mikhailsimon/AnyKernel3; then
 echo -e "\nAnyKernel3 repo not found locally and cloning failed! Aborting..."
 exit 1
 fi
