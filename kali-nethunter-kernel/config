@@ -6,7 +6,7 @@
 TD=~/android/toolchains
 
 # Preferred editor
-EDIT=vi
+EDIT=nano
 
 # Architecture
 export ARCH=arm64
