@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Compile script for QuicksilveR kernel
+# Compile script for Nethunter kernel
 # Copyright (C) 2020-2021 Adithya R.
 
 SECONDS=0 # builtin bash timer
@@ -40,7 +40,7 @@ fi
 mkdir -p out
 make O=out ARCH=arm64 $DEFCONFIG
 
-echo -e "\nStarting compilation...\n"
+echo -e "\nStarting Nethunter compilation...\n"
 make -j$(nproc --all) O=out ARCH=arm64 CC=clang LD=ld.lld AR=llvm-ar AS=llvm-as NM=llvm-nm OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump STRIP=llvm-strip CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_ARM32=arm-linux-gnueabi- Image.gz-dtb dtbo.img
 
 if [ -f "out/arch/arm64/boot/Image.gz-dtb" ] && [ -f "out/arch/arm64/boot/dtbo.img" ]; then
@@ -67,6 +67,6 @@ echo "Uploading Nethunter file to temporary site..."
 curl --upload-file zipout/$ZIPNAME https://temp.sh/$ZIPNAME; echo
 echo "Nethunter zip file is stored on zipout directory!"
 else
-echo -e "\nCompilation failed!"
+echo -e "\nCompilation failed!Please try again!"
 exit 1
 fi
